@@ -1,0 +1,43 @@
+Steps to Install Nginx and Host a Webpage on AWS Ubuntu
+1. Install Nginx and Start the Service
+Update the package list and install Nginx. Then, start the service and enable it to run on boot.
+Command:
+sudo apt update && sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+To check if Nginx is running:
+sudo systemctl status nginx
+
+2. Allow HTTP Traffic on Port 80
+Ensure that the firewall allows HTTP traffic.
+
+
+3. Navigate to the Web Directory
+Move to the directory where the web files are stored.
+Command:
+cd /var/www/html
+
+4. Create and Edit the Webpage Files
+Create an HTML file named login.html.
+Command:
+sudo nano login.html
+
+Create a CSS file named style.css.
+Command:
+sudo nano style.css
+
+5. Modify Nginx Configuration to Serve the Webpage on Port 80
+Edit the Nginx default configuration file.
+Command:
+sudo nano /etc/nginx/sites-available/default
+
+Ensure the listen directive is set to port 80:
+listen 80 default_server;
+
+Save and exit the file.
+
+6. Restart Nginx to Apply Changes
+Restart the Nginx service to load the new configuration.
+Command:
+sudo systemctl restart nginx
